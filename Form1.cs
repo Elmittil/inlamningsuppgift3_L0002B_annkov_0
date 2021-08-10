@@ -40,12 +40,11 @@ namespace inlamningsuppgift2_L0002B_annkov_0
 
         private Seller SaveNewSellerTemp()
         {
-            Seller newSeller = new Seller()
+            Person newSeller = new Person()
             {
                 Name = this.name_tb.Text,
-                Id = this.lastName_tb.Text,
-                District = this.id_tb.Text,
-                Sales = int.Parse(this.sales_tb.Text)
+                LastName = this.lastName_tb.Text,
+                Id = this.id_tb.Text
             };
             sellerHolder.Add(newSeller);
             return newSeller;

@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace inlamningsuppgift2_L0002B_annkov_0
 {
-    public class Seller
+    public class Person
     {
         public string Name { get; set; }
         public string Id { get; set; }
-        public string District { get; set; }
-        public int Sales { get; set; }
+        public string LastName { get; set; }
 
         /// <summary>
         /// return all fields as a string
@@ -19,7 +18,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         /// <returns>string containing Seller Name Id District and Sales amount</returns>
         public string GetInfo()
         {
-            string sellerInfo = $"{Name} {Id} {District} {Sales}";
+            string sellerInfo = $"{Name} {LastName} {Id}";
             return sellerInfo;
         }
     }
