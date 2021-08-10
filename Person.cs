@@ -11,6 +11,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         public string Name { get; set; }
         public string Id { get; set; }
         public string LastName { get; set; }
+        public string Gender { get; set; }
 
         /// <summary>
         /// return all fields as a string
@@ -20,6 +21,16 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         {
             string sellerInfo = $"{Name} {LastName} {Id}";
             return sellerInfo;
+        }
+
+        internal bool verifyId()
+        {
+            return false;
+        }
+
+        internal string getGender()
+        {
+            return Gender;
         }
     }
 }

@@ -8,9 +8,9 @@ namespace inlamningsuppgift2_L0002B_annkov_0
 {
     public partial class Form1 : Form
     {
-        
+        Person newPerson;
         string formater = "{0,-30}\t{1,-15}\t{2,-15}\t{3,-5}\n";
-        const int salesLevels = 4;
+        string message;
         public Form1()
         {
             InitializeComponent();
@@ -36,17 +36,18 @@ namespace inlamningsuppgift2_L0002B_annkov_0
 
         private void verify_button_Click(object sender, EventArgs e)
         {
-            Person newPerson = new Person()
-            {
-                Name = this.name_tb.Text,
-                Id = this.id_tb.Text,
-                LastName = this.lastName_tb.Text
-            };
+            
             if (hasInput())
             {
                 if (InputValid())
                 {
-                    SaveNewSellerTemp();
+                    newPerson = new Person()
+                    {
+                        Name = this.name_tb.Text,
+                        Id = this.id_tb.Text,
+                        LastName = this.lastName_tb.Text
+                    };
+                    verifyId();
                 }
                 else
                 {
@@ -54,76 +55,39 @@ namespace inlamningsuppgift2_L0002B_annkov_0
                     return;
                 }
             }
-            TestData();
-            sellerHolder.OrderBy(s => s.Sales);
 
             StringBuilder builder = new StringBuilder();
 
             builder.AppendFormat(formater, "Namn", "Personnr", "Distrikt", "Antal");
-            for (int levels = salesLevels; levels > 0; levels--)
-            {
-                builder.Append(GetAllSellersInALevelString(this.sellerHolder, levels));
-            }
+          
+                builder.Append("");
+
 
             MessageBox.Show(builder.ToString());
 
         }
 
-        private string GetAllSellersInALevelString(List<Seller> sellersList, int level)
+        private void verifyId()
         {
             StringBuilder builder = new StringBuilder();
-            int minSales = GetMinMaxInLevel(level)[0];
-            int maxSales = GetMinMaxInLevel(level)[1];
-            int counter = 0;
-            foreach (Seller seller in sellersList)
-            {
-                if (seller.Sales >= minSales && seller.Sales <= maxSales)
-                {
-                    builder.AppendFormat(formater, seller.Name, seller.Id, seller.District, seller.Sales);
-                    counter++;
-                }
-            }
 
-            if (counter > 0)
+            builder.AppendFormat(formater, newPerson.Name, newPerson.LastName, newPerson.Id, newPerson.Gender);
+
+            //figure out how to get gender. 
+            MessageBox.Show(builder.ToString());
+            if (newPerson.verifyId())
             {
-                builder.Append($"{counter} saljare har uppnat niva {level}\n\n");
-            }
-            return builder.ToString();
+                message = 
+            }  
+            
+
         }
 
-        private int[] GetMinMaxInLevel(int level)
-        {
-            int min = 0;
-            int max = 0;
-
-            switch (level)
-            {
-                case 1:
-                    min = 0;
-                    max = 49;
-                    break;
-                case 2:
-                    min = 50;
-                    max = 99;
-                    break;
-                case 3:
-                    min = 100;
-                    max = 199;
-                    break;
-                case 4:
-                    min = 200;
-                    max = int.MaxValue;
-                    break;
-            }
-
-            int[] result = { min, max };
-            return result;
-        }
-
+        
+        //check if names contain numbers!!!
+        //check if id contains letters !!!
         private bool InputValid()
         {
-            int sales;
-            if (!int.TryParse(this.sales_tb.Text, out sales)) return false;
             if (String.IsNullOrEmpty(this.lastName_tb.Text)) return false;
             if (String.IsNullOrEmpty(this.id_tb.Text)) return false;
             if (String.IsNullOrEmpty(this.name_tb.Text)) return false;
@@ -132,53 +96,10 @@ namespace inlamningsuppgift2_L0002B_annkov_0
 
         private bool hasInput()
         {
-            if (!String.IsNullOrEmpty(this.sales_tb.Text)) return true;
             if (!String.IsNullOrEmpty(this.lastName_tb.Text)) return true;
             if (!String.IsNullOrEmpty(this.id_tb.Text)) return true;
             if (!String.IsNullOrEmpty(this.name_tb.Text)) return true;
             return false;
-        }
-
-        private void TestData()
-        {
-            Seller one = new Seller()
-            {
-
-                Name = "Marilyn Monroe",
-                Id = "92879376392",
-                District = "Hollywood",
-                Sales = 20
-            };
-
-            Seller two = new Seller()
-            {
-                Name = "Mahatma",
-                Id = "862693620",
-                District = "Bollywoon",
-                Sales = 80
-            };
-
-            Seller three = new Seller()
-            {
-                Name = "Darth Vader",
-                Id = "92879376392",
-                District = "Death Star",
-                Sales = 180
-            };
-
-            Seller four = new Seller()
-            {
-                Name = "Sherlock Holmes",
-                Id = "82036416",
-                District = "22 Baker St",
-                Sales = 380
-            };
-
-            sellerHolder.Add(three);
-            sellerHolder.Add(two);
-            sellerHolder.Add(four);
-            sellerHolder.Add(one);
-
         }
     }
 }
