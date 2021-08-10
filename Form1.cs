@@ -44,7 +44,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             {
                 Name = this.name_tb.Text,
                 Id = this.lastName_tb.Text,
-                District = this.district_tb.Text,
+                District = this.id_tb.Text,
                 Sales = int.Parse(this.sales_tb.Text)
             };
             sellerHolder.Add(newSeller);
@@ -55,7 +55,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         {
             this.name_tb.Text = String.Empty;
             this.lastName_tb.Text = String.Empty;
-            this.district_tb.Text = String.Empty;
+            this.id_tb.Text = String.Empty;
             this.sales_tb.Text = String.Empty;
         }
 
@@ -144,7 +144,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             int sales;
             if (!int.TryParse(this.sales_tb.Text, out sales)) return false;
             if (String.IsNullOrEmpty(this.lastName_tb.Text)) return false;
-            if (String.IsNullOrEmpty(this.district_tb.Text)) return false;
+            if (String.IsNullOrEmpty(this.id_tb.Text)) return false;
             if (String.IsNullOrEmpty(this.name_tb.Text)) return false;
             return true;
         }
@@ -153,7 +153,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         {
             if (!String.IsNullOrEmpty(this.sales_tb.Text)) return true;
             if (!String.IsNullOrEmpty(this.lastName_tb.Text)) return true;
-            if (!String.IsNullOrEmpty(this.district_tb.Text)) return true;
+            if (!String.IsNullOrEmpty(this.id_tb.Text)) return true;
             if (!String.IsNullOrEmpty(this.name_tb.Text)) return true;
             return false;
         }
