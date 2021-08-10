@@ -8,13 +8,13 @@ namespace inlamningsuppgift2_L0002B_annkov_0
 {
     public partial class Form1 : Form
     {
-        List<Seller> sellerHolder;
+        
         string formater = "{0,-30}\t{1,-15}\t{2,-15}\t{3,-5}\n";
         const int salesLevels = 4;
         public Form1()
         {
             InitializeComponent();
-            sellerHolder = new List<Seller>();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -22,32 +22,9 @@ namespace inlamningsuppgift2_L0002B_annkov_0
 
         }
 
-        private void next_button_Click(object sender, EventArgs e)
+        private void clear_button_Click(object sender, EventArgs e)
         {
-
-            if (InputValid())
-            {
-                Seller newSeller = SaveNewSellerTemp();
-                string message = newSeller.GetInfo() + " är tillagd!";
-                this.info_l.Text = message;
-                clearAllFields();
-            }
-            else
-            {
-                MessageBox.Show("Vänligen kontrollera input");
-            }
-        }
-
-        private Seller SaveNewSellerTemp()
-        {
-            Person newSeller = new Person()
-            {
-                Name = this.name_tb.Text,
-                LastName = this.lastName_tb.Text,
-                Id = this.id_tb.Text
-            };
-            sellerHolder.Add(newSeller);
-            return newSeller;
+            clearAllFields();
         }
 
         private void clearAllFields()
@@ -55,11 +32,16 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             this.name_tb.Text = String.Empty;
             this.lastName_tb.Text = String.Empty;
             this.id_tb.Text = String.Empty;
-            this.sales_tb.Text = String.Empty;
         }
 
-        private void save_button_Click(object sender, EventArgs e)
+        private void verify_button_Click(object sender, EventArgs e)
         {
+            Person newPerson = new Person()
+            {
+                Name = this.name_tb.Text,
+                Id = this.id_tb.Text,
+                LastName = this.lastName_tb.Text
+            };
             if (hasInput())
             {
                 if (InputValid())

@@ -130,7 +130,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             this.verify_button.TabIndex = 0;
             this.verify_button.Text = "Kontrollera";
             this.verify_button.UseVisualStyleBackColor = false;
-            this.verify_button.Click += new System.EventHandler(this.next_button_Click);
+            this.verify_button.Click += new System.EventHandler(this.verify_button_Click);
             // 
             // clear_button
             // 
@@ -146,7 +146,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             this.clear_button.TabIndex = 1;
             this.clear_button.Text = "Nollställa";
             this.clear_button.UseVisualStyleBackColor = false;
-            this.clear_button.Click += new System.EventHandler(this.save_button_Click);
+            this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
             // 
             // info_l
             // 
@@ -219,7 +219,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             this.Controls.Add(this.name_l);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Text = "Kontrollera personnr";
+            this.Text = "Personnummerkontroll";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.buttons_layout.ResumeLayout(false);
             this.ResumeLayout(false);
