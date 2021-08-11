@@ -28,8 +28,38 @@ namespace inlamningsuppgift2_L0002B_annkov_0
 
         internal bool isIdValid()
         {
+            //sum of all digits inn a number
+            int number = Convert.ToInt32(Console.ReadLine());
+            int sum = 0;
+
+            while (number / 10 > 0)
+            {
+                sum = sum + (number % 10);
+                number = number / 10;
+            }
+
 
             return false;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        internal void formatId()
+        {
+            Id.Trim();
+
+            //remove first two chars if the string starts with "19"
+            if (Id.Substring(0,1).Equals("19"))
+            {
+                Id.Remove(0, 2);
+            }
+            //remove a "-" if used
+            if (Id.Contains("-"))
+            {
+                Id.Remove(6);
+            }
         }
 
         /// <summary>
@@ -48,12 +78,24 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         /// </summary>
         internal int getGenderDigit()
         {
+            formatId();
             int genderDigit = 0;
-            Id.Trim();
-            string genderChar = Id.Substring(9);
+            string genderChar = Id.Substring(8);
             int.TryParse(genderChar, out genderDigit);
             
             return genderDigit;
+        }
+        /// <summary>
+        /// Extracts the last character from the Id and returns it as a digit
+        /// </summary>
+        internal int getControlDigit()
+        {
+            int controlDigit = -5;
+            formatId();
+            string genderChar = Id.Substring(9);
+            int.TryParse(genderChar, out controlDigit);
+
+            return controlDigit;
         }
     }
 }
