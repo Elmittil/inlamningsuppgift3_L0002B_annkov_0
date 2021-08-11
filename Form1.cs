@@ -9,7 +9,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
     public partial class Form1 : Form
     {
         Person newPerson;
-        string formater = "{0,-30}\t{1,-15}\t{2,-15}\t{3,-5}\n";
+        
         string message;
         public Form1()
         {
@@ -56,14 +56,10 @@ namespace inlamningsuppgift2_L0002B_annkov_0
                 }
             }
 
-            StringBuilder builder = new StringBuilder();
-
-            builder.AppendFormat(formater, "Namn", "Personnr", "Distrikt", "Antal");
-          
-                builder.Append("");
+           
 
 
-            MessageBox.Show(builder.ToString());
+            MessageBox.Show();
 
         }
 

@@ -13,14 +13,17 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         public string LastName { get; set; }
         public string Gender { get; set; }
 
+        string formater = "Namn:\t{0}\nEfternamn:\t{1}\nPersonnummer:\t{2}\nKön:\t{3}";
+
         /// <summary>
         /// return all fields as a string
         /// </summary>
-        /// <returns>string containing Seller Name Id District and Sales amount</returns>
+        /// <returns>string containing Name LastName Id and Gender</returns>
         public string GetInfo()
         {
-            string sellerInfo = $"{Name} {LastName} {Id}";
-            return sellerInfo;
+            StringBuilder builder = new StringBuilder();
+            builder.AppendFormat(formater, Name, LastName, Id, Gender);
+            return builder.ToString();
         }
 
         internal bool isIdValid()
@@ -29,7 +32,9 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             return false;
         }
 
-        //Assigns a value to Gender based on the birth number values
+        /// <summary>
+        /// Assigns a value to Gender based on the birth number values
+        /// </summary>
         internal void assignGender()
         {
             int genderDigit = getGenderDigit(); 
@@ -38,8 +43,10 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             else { Gender = "Man"; }
         }
 
-        //Extracts the third character from the Id's birth number and returns it as a digit
-         internal int getGenderDigit()
+        /// <summary>
+        /// Extracts the third character from the Id's birth number and returns it as a digit
+        /// </summary>
+        internal int getGenderDigit()
         {
             int genderDigit = 0;
             Id.Trim();
