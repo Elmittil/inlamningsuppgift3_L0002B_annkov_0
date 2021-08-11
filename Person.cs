@@ -30,7 +30,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         }
 
         //Assigns a value to Gender based on the birth number values
-        internal void getGender()
+        internal void assignGender()
         {
             int genderDigit = getGenderDigit(); 
             if (genderDigit % 2 == 0)
