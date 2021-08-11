@@ -75,7 +75,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
 
             //figure out how to get gender. 
             MessageBox.Show(builder.ToString());
-            if (newPerson.verifyId())
+            if (newPerson.isIdValid())
             {
                 message = 
             }  
