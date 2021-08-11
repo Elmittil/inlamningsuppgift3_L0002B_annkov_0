@@ -28,9 +28,25 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             return false;
         }
 
-        internal string getGender()
+        internal void getGender()
         {
-            return Gender;
+            Id.Trim();
+            int genderDigit = getGenderDigit(); 
+            //get last digit
+            if (genderDigit % 2 == 0)
+            { Gender = "Kvinna"; }
+            else { Gender = "Man"; }
+               
+        }
+
+        //Extracts the third character from the Id's birth number and returns it as a digit
+         internal int getGenderDigit()
+        {
+            int genderDigit = 0;
+            string genderChar = Id.Substring(9);
+            int.TryParse(genderChar, out genderDigit);
+            
+            return genderDigit;
         }
     }
 }
