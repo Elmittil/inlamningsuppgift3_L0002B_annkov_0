@@ -4,6 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Person class 
+// contains fields Name, Id, LastName, Gender and Numeric id. All strigs, NumericId is private. 
+// methods  IsIdValid()     -checks id validity
+//          GetInfo()       -returns all personal information as a string
+//          FormatId()      -formats the id to contain only numbers, length 10 characters
+//          AssignGender()  -calcuylates and assigns gender
+//          GetGenderDigit()    -returns the next last digit for gender
+//          GetControlDigit()   -returns control digit – last digit 
+
 namespace inlamningsuppgift3_L0002B_annkov_0
 {
     public class Person
@@ -31,14 +40,14 @@ namespace inlamningsuppgift3_L0002B_annkov_0
 
 
         /// <summary>
-        /// multiplies every other digit in personal number by 2 starting with the first one.Sum all the digits.If the digit is evenly divided by 2 – return true
+        /// multiplies every other digit in personal number by 2 starting with the first one. 
+        /// Sum up all the digits, includion double digts numbers. If the sum is evenly divided by 2 – return true
         /// </summary>
         /// returns true if control sup is evenly dividable by 10
-        public bool isIdValid()
+        public bool IsIdValid()
         {
             FormatId();
-            assignGender();
-            int controlDigit = getControlDigit();
+            AssignGender();
 
             List<int> digitsInId = new List<int>();
 
@@ -52,11 +61,6 @@ namespace inlamningsuppgift3_L0002B_annkov_0
                 }
                 digitsInId.Add(int.Parse(character.ToString()));
             }
-
-            //remove control digit from sequence
-            //digitsInId.RemoveAt(9);
-
-            
 
             //sum of all digits in an id
             int sum = 0;
@@ -88,7 +92,8 @@ namespace inlamningsuppgift3_L0002B_annkov_0
 
 
         /// <summary>
-        /// 
+        /// formats the Id string, to containn no empty spaces on both ends,
+        /// the date part is only 6 digits, and no charcacters. result is stored in NumericId 
         /// </summary>
         internal void FormatId()
         {
@@ -100,6 +105,8 @@ namespace inlamningsuppgift3_L0002B_annkov_0
                 Id = Id.Remove(0, 2);
             }
 
+            //remove first two characters if the string starts with 20 and is longer than 11 characters
+            // (inclused whole year, rather than last two digits)
             if (Id.Substring(0,2).Equals("20") && Id.Length > 11)
             {
                 Id = Id.Remove(0, 2);
@@ -116,9 +123,9 @@ namespace inlamningsuppgift3_L0002B_annkov_0
         /// <summary>
         /// Assigns a value to Gender based on the birth number values
         /// </summary>
-        internal void assignGender()
+        internal void AssignGender()
         {
-            int genderDigit = getGenderDigit(); 
+            int genderDigit = GetGenderDigit(); 
             if (genderDigit % 2 == 0)
             { Gender = "Kvinna"; }
             else { Gender = "Man"; }
@@ -127,7 +134,7 @@ namespace inlamningsuppgift3_L0002B_annkov_0
         /// <summary>
         /// Extracts the third character from the Id's birth number and returns it as a digit
         /// </summary>
-        internal int getGenderDigit()
+        internal int GetGenderDigit()
         {
             int genderDigit = 0;
             string genderChar = NumericId.Substring(8);
@@ -138,7 +145,7 @@ namespace inlamningsuppgift3_L0002B_annkov_0
         /// <summary>
         /// Extracts the last character from the Id and returns it as a digit
         /// </summary>
-        internal int getControlDigit()
+        internal int GetControlDigit()
         {
             int controlDigit = -5;
             string genderChar = NumericId.Substring(9);

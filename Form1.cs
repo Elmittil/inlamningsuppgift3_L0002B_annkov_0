@@ -22,18 +22,24 @@ namespace inlamningsuppgift3_L0002B_annkov_0
 
         }
 
+        // clears all fields on button click
         private void clear_button_Click(object sender, EventArgs e)
         {
             clearAllFields();
         }
 
+        // sets text boxes and result label too empty strings
         private void clearAllFields()
         {
             this.name_tb.Text = String.Empty;
             this.lastName_tb.Text = String.Empty;
             this.id_tb.Text = String.Empty;
+            this.result_l.Text = String.Empty;
         }
 
+
+        // veryfy button creates a new person
+        // validates Id and innput
         private void verify_button_Click(object sender, EventArgs e)
         {
             
@@ -59,9 +65,10 @@ namespace inlamningsuppgift3_L0002B_annkov_0
          
         }
 
+        // sets the message in result label according to whether the id is valid
         private void verifyId()
         {
-            if (newPerson.isIdValid())
+            if (newPerson.IsIdValid())
             {
                 message = newPerson.GetInfo();
             } else
@@ -73,8 +80,7 @@ namespace inlamningsuppgift3_L0002B_annkov_0
         }
 
         
-        //check if names contain numbers!!!
-        //check if id contains letters !!!
+        //checks input for text boxes.  names contain no numbers. 
         private bool InputValid()
         {
             if (String.IsNullOrEmpty(this.lastName_tb.Text)) return false;
@@ -86,6 +92,7 @@ namespace inlamningsuppgift3_L0002B_annkov_0
             return true;
         }
 
+        //checks id all text boxes are not null,
         private bool hasInput()
         {
             if (!String.IsNullOrEmpty(this.lastName_tb.Text)) return true;
