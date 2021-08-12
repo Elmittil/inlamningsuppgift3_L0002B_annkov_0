@@ -15,7 +15,7 @@ namespace inlamningsuppgift3_L0002B_annkov_0
 
         private string NumericId { get; set; }
 
-        string formater = "Namn:                {0}\nEfternamn:          {1}\nPersonnummer:  {2}\nKön:                   {3}";
+        string formater = "Namn:                {0}\nEfternamn:         {1}\nPersonnummer:  {2}\nKön:                   {3}";
 
         /// <summary>
         /// return all fields as a string
@@ -98,7 +98,11 @@ namespace inlamningsuppgift3_L0002B_annkov_0
             if (Id.Substring(0,2).Equals("19"))
             {
                 Id = Id.Remove(0, 2);
-                
+            }
+
+            if (Id.Substring(0,2).Equals("20") && Id.Length > 11)
+            {
+                Id = Id.Remove(0, 2);
             }
             //remove a "-" if used
             var str = Id;

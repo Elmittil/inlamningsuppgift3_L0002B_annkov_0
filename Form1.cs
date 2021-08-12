@@ -78,8 +78,11 @@ namespace inlamningsuppgift3_L0002B_annkov_0
         private bool InputValid()
         {
             if (String.IsNullOrEmpty(this.lastName_tb.Text)) return false;
+            if (this.lastName_tb.Text.Any(char.IsDigit)) return false;
             if (String.IsNullOrEmpty(this.id_tb.Text)) return false;
             if (String.IsNullOrEmpty(this.name_tb.Text)) return false;
+            if (this.name_tb.Text.Any(char.IsDigit)) return false;
+
             return true;
         }
 
