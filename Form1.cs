@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace inlamningsuppgift2_L0002B_annkov_0
+namespace inlamningsuppgift3_L0002B_annkov_0
 {
     public partial class Form1 : Form
     {
@@ -69,6 +69,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
                 message = "Personnummer felaktigt, försök igen!";
                 //clearAllFields();
             }
+            this.result_l.Text = message;
         }
 
         

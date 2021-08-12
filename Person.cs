@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace inlamningsuppgift2_L0002B_annkov_0
+namespace inlamningsuppgift3_L0002B_annkov_0
 {
     public class Person
     {
@@ -13,7 +13,9 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         public string LastName { get; set; }
         public string Gender { get; set; }
 
-        string formater = "Namn:\t{0}\nEfternamn:\t{1}\nPersonnummer:\t{2}\nKön:\t{3}";
+        private string NumericId { get; set; }
+
+        string formater = "Namn:\t\t{0}\nEfternamn:\t\t{1}\nPersonnummer:\t\t{2}\nKön:\t\t{3}";
 
         /// <summary>
         /// return all fields as a string
@@ -23,7 +25,8 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         {
             StringBuilder builder = new StringBuilder();
             builder.AppendFormat(formater, Name, LastName, Id, Gender);
-            return builder.ToString();
+            string result = builder.ToString();
+            return result;
         }
 
 
@@ -33,13 +36,20 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         /// returns true if control sup is evenly dividable by 10
         public bool isIdValid()
         {
+            FormatId();
+            assignGender();
             int controlDigit = getControlDigit();
 
             List<int> digitsInId = new List<int>();
 
             //fill a list with integers that correspond to each characteri n Id
-            foreach(char character in Id)
+            foreach(char character in NumericId)
             {
+                int bar;
+                if (!int.TryParse(character.ToString(), out bar))
+                {
+                    Console.WriteLine("Cannot parse " + character + "to" + bar);
+                }
                 digitsInId.Add(int.Parse(character.ToString()));
             }
 
@@ -74,13 +84,12 @@ namespace inlamningsuppgift2_L0002B_annkov_0
 
             if (sum%10 == 0) { return true; }
             else { return false; }
-        }
-
+        
 
         /// <summary>
         /// 
         /// </summary>
-        internal void formatId()
+        internal void FormatId()
         {
             Id.Trim();
 
@@ -90,10 +99,12 @@ namespace inlamningsuppgift2_L0002B_annkov_0
                 Id.Remove(0, 2);
             }
             //remove a "-" if used
-            if (Id.Contains("-"))
-            {
-                Id.Remove(6);
-            }
+            var str = Id;
+            str = new string((from c in str
+                              where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c)
+                              select c
+                   ).ToArray());
+            NumericId = str;
         }
 
         /// <summary>
@@ -112,9 +123,8 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         /// </summary>
         internal int getGenderDigit()
         {
-            formatId();
             int genderDigit = 0;
-            string genderChar = Id.Substring(8);
+            string genderChar = NumericId.Substring(8);
             int.TryParse(genderChar, out genderDigit);
             
             return genderDigit;
@@ -125,8 +135,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         internal int getControlDigit()
         {
             int controlDigit = -5;
-            formatId();
-            string genderChar = Id.Substring(9);
+            string genderChar = NumericId.Substring(9);
             int.TryParse(genderChar, out controlDigit);
 
             return controlDigit;

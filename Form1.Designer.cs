@@ -1,5 +1,5 @@
 ﻿
-namespace inlamningsuppgift2_L0002B_annkov_0
+namespace inlamningsuppgift3_L0002B_annkov_0
 {
     partial class Form1
     {
@@ -76,7 +76,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             // 
             // name_tb
             // 
-            this.name_tb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.name_tb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.name_tb.Location = new System.Drawing.Point(14, 80);
             this.name_tb.Name = "name_tb";
@@ -85,7 +85,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             // 
             // lastName_tb
             // 
-            this.lastName_tb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lastName_tb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lastName_tb.Location = new System.Drawing.Point(14, 130);
             this.lastName_tb.Name = "lastName_tb";
@@ -94,7 +94,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             // 
             // id_tb
             // 
-            this.id_tb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.id_tb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.id_tb.Location = new System.Drawing.Point(13, 181);
             this.id_tb.Name = "id_tb";
@@ -103,7 +103,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             // 
             // buttons_layout
             // 
-            this.buttons_layout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.buttons_layout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttons_layout.ColumnCount = 2;
             this.buttons_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
