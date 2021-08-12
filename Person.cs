@@ -26,20 +26,54 @@ namespace inlamningsuppgift2_L0002B_annkov_0
             return builder.ToString();
         }
 
+
+        /// <summary>
+        /// multiplies every other digit in personal number by 2 starting with the first one.Sum all the digits.If the digit is evenly divided by 2 – return true
+        /// </summary>
+        /// 
         internal bool isIdValid()
         {
-            //sum of all digits inn a number
-            int number = Convert.ToInt32(Console.ReadLine());
-            int sum = 0;
+            int controlDigit = getControlDigit();
 
-            while (number / 10 > 0)
+            List<int> digitsInId = new List<int>();
+
+            //fill a list with integers that correspond to each characteri n Id
+            foreach(char character in Id)
             {
-                sum = sum + (number % 10);
-                number = number / 10;
+                digitsInId.Add(int.Parse(character.ToString()));
             }
 
+            //remove control digit from sequence
+            //digitsInId.RemoveAt(9);
 
-            return false;
+            
+
+            //sum of all digits in an id
+            int sum = 0;
+
+            //multiply every other digitin digitsInId by 2, startion with 0
+            for (int i = 0; i < 10; i++)
+            {
+                if(i == 0 || i%2 == 0)
+                {
+                    digitsInId[i] = digitsInId[i] * 2;
+                }
+            }
+
+            //sum of all Numbers. Numbers that consist of 2 digits are summed up as two numbers.
+            foreach(int digit in digitsInId)
+            {
+                if (digit > 9)
+                {
+                    sum = sum + (digit / 10) + (digit % 10);
+                } else
+                {
+                    sum = sum + digit;
+                }
+            }
+
+            if (sum%10 == 0) { return true; }
+            else { return false; }
         }
 
 
