@@ -15,7 +15,7 @@ namespace inlamningsuppgift3_L0002B_annkov_0
 
         private string NumericId { get; set; }
 
-        string formater = "Namn:\t\t{0}\nEfternamn:\t\t{1}\nPersonnummer:\t\t{2}\nKön:\t\t{3}";
+        string formater = "Namn:\t{0}\nEfternamn:\t{1}\nPersonnummer:\t{2}\nKön:\t{3}";
 
         /// <summary>
         /// return all fields as a string
@@ -84,7 +84,8 @@ namespace inlamningsuppgift3_L0002B_annkov_0
 
             if (sum%10 == 0) { return true; }
             else { return false; }
-        
+        }
+
 
         /// <summary>
         /// 
