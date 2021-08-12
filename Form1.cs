@@ -56,27 +56,19 @@ namespace inlamningsuppgift2_L0002B_annkov_0
                 }
             }
 
-           
-
-
-            MessageBox.Show();
-
+         
         }
 
         private void verifyId()
         {
-            StringBuilder builder = new StringBuilder();
-
-            builder.AppendFormat(formater, newPerson.Name, newPerson.LastName, newPerson.Id, newPerson.Gender);
-
-            //figure out how to get gender. 
-            MessageBox.Show(builder.ToString());
             if (newPerson.isIdValid())
             {
-                message = 
-            }  
-            
-
+                message = newPerson.GetInfo();
+            } else
+            {
+                message = "Personnummer felaktigt, försök igen!";
+                //clearAllFields();
+            }
         }
 
         

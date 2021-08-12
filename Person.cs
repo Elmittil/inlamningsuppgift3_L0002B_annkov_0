@@ -31,7 +31,7 @@ namespace inlamningsuppgift2_L0002B_annkov_0
         /// multiplies every other digit in personal number by 2 starting with the first one.Sum all the digits.If the digit is evenly divided by 2 – return true
         /// </summary>
         /// returns true if control sup is evenly dividable by 10
-        internal bool isIdValid()
+        public bool isIdValid()
         {
             int controlDigit = getControlDigit();
 
