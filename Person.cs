@@ -138,7 +138,8 @@ namespace inlamningsuppgift3_L0002B_annkov_0
         internal int GetGenderDigit()
         {
             int genderDigit = 0;
-            string genderChar = NumericId.Substring(8);
+            string genderChar = NumericId.Substring(8,1);
+
             int.TryParse(genderChar, out genderDigit);
             
             return genderDigit;
